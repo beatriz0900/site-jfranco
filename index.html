@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.FRANCO - Personal Trainer & Consultoria</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron (Headers) e Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fire: {
+                            500: '#ff4500',
+                            600: '#e63900',
+                            glow: '#ff5722',
+                        },
+                        darkBg: '#0a0505',
+                        darkCard: '#140c0c',
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0505;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Efeito Glow e Fogo */
+        .text-fire-glow {
+            text-shadow: 0 0 12px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 87, 34, 0.4);
+        }
+        
+        .fire-border {
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .fire-border:hover {
+            border-color: rgba(255, 87, 34, 0.8);
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .bg-fire-gradient {
+            background: radial-gradient(circle at center, rgba(180, 40, 0, 0.35) 0%, rgba(10, 5, 5, 0.95) 70%);
+        }
+
+        .bg-card-gradient {
+            background: linear-gradient(145deg, rgba(25(20), 12, 12, 0.9) 0%, rgba(10, 5, 5, 0.95) 100%);
+        }
+
+        /* Ambient Fire Background Overlay */
+        .ambient-fire {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse at 20% 10%, rgba(255, 69, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 87, 34, 0.06) 0%, transparent 50%);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff4500;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+
+    <div class="ambient-fire"></div>
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 bg-[#0a0505] border-b border-red-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="relative flex items-center justify-center w-12 h-12 bg-black border border-fire-500/50 rounded-lg group-hover:border-fire-500 transition-all shadow-[0_0_15px_rgba(255,69,0,0.3)]">
+                        <span class="font-heading text-2xl font-black text-white group-hover:text-fire-500 transition-colors">J<span class="text-fire-500">.</span>F</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-black tracking-wider text-xl text-white group-hover:text-fire-glow transition-all">J.FRANCO</span>
+                        <span class="text-[10px] tracking-[0.2em] font-bold text-red-500 uppercase -mt-1">Personal & Consultoria</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                    <a href="#home" class="hover:text-fire-500 transition-colors">Início</a>
+                    <a href="#personal" class="hover:text-fire-500 transition-colors">Presencial</a>
+                    <a href="#consultoria" class="hover:text-fire-500 transition-colors">Consultoria</a>
+                    <a href="#calculadora" class="hover:text-fire-500 transition-colors">Calculadora</a>
+                    <a href="#parcerias" class="hover:text-fire-500 transition-colors">Parcerias</a>
+                    <a href="#contato" class="hover:text-fire-500 transition-colors">Contato</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center">
+                    <a href="https://wa.me/5511985027705?text=Olá%20J.Franco!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" class="flex items-center space-x-2 bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-bold py-2.5 px-5 rounded-full shadow-[0_0_15px_rgba(255,69,0,0.4)] transition-all hover:scale-105">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0e0707] border-b border-fire-500/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Início</a>
+            <a href="#personal" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Presencial</a>
+            <a href="#consultoria" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Consultoria</a>
+            <a href="#calculadora" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Calculadora de Planos</a>
+            <a href="#parcerias" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Parcerias</a>
+            <a href="#contato" class="mobile-link block py-2 text-base font-semibold hover:text-fire-500">Contato</a>
+            <a href="https://wa.me/5511985027705?text=Olá%20J.Franco!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" class="w-full mt-2 flex items-center justify-center space-x-2 bg-fire-600 hover:bg-fire-500 text-white font-bold py-3 rounded-lg shadow-lg">
+                <i class="fab fa-whatsapp text-xl"></i>
+                <span>Falar no WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <section id="home" class="relative z-10 py-20 lg:py-32 overflow-hidden bg-fire-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-fire-500/10 border border-fire-500/30 text-fire-500 text-xs font-bold tracking-widest uppercase">
+                        <i class="fas fa-fire animate-pulse"></i>
+                        <span>Treinamento de Alta Performance</span>
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-none">
+                        PERSONAL TRAINER <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-fire-500 via-orange-500 to-yellow-500 text-fire-glow">E CONSULTORIA</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Aprimoramento motor, correção postural e treinamento periodizado sob medida. Alcance sua melhor versão com acompanhamento profissional especializado.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#planos-toggle" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-bold font-heading tracking-wide shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all hover:scale-105 text-center">
+                            VER PLANOS E VALORES
+                        </a>
+                        <a href="https://wa.me/5511985027705?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-transparent border-2 border-fire-500/50 hover:border-fire-500 text-white hover:bg-fire-500/10 font-bold font-heading tracking-wide transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-calendar-check text-fire-500"></i>
+                            <span>AGENDAR AVALIAÇÃO</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Hero Card -->
+                <div class="relative flex justify-center">
+                    <div class="relative w-full max-w-md bg-card-gradient p-8 rounded-3xl fire-border backdrop-blur-xl text-center">
+                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-black border border-fire-500 rounded-full px-6 py-2 shadow-[0_0_15px_rgba(255,69,0,0.6)]">
+                            <span class="font-heading font-black text-white text-sm tracking-wider">J.FRANCO PERSONAL</span>
+                        </div>
+                        
+                        <!-- Emblem Graphic -->
+                        <div class="my-6 py-8 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full border-2 border-fire-500/60 flex items-center justify-center relative shadow-[0_0_30px_rgba(255,69,0,0.4)]">
+                                <i class="fas fa-dumbbell text-5xl text-fire-500"></i>
+                                <div class="absolute inset-0 rounded-full border border-orange-500 animate-ping opacity-25"></div>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-white mt-6 uppercase tracking-wider">Metodologia Exclusiva</h3>
+                            <p class="text-sm text-gray-400 mt-2">Resultados sólidos embasados em biomecânica e acompanhamento contínuo.</p>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 pt-4 border-t border-red-950/50 text-center">
+                            <div>
+                                <span class="block font-heading font-bold text-xl text-fire-500">100%</span>
+                                <span class="text-[11px] text-gray-400 uppercase">Personalizado</span>
+                            </div>
+                            <div>
+                                <span class="block font-heading font-bold text-xl text-fire-500">24/7</span>
+                                <span class="text-[11px] text-gray-400 uppercase">Suporte Suporte</span>
+                            </div>
+                            <div>
+                                <span class="block font-heading font-bold text-xl text-fire-500">Foco</span>
+                                <span class="text-[11px] text-gray-400 uppercase">Resultados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos-toggle" class="relative z-10 py-20 bg-black/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-heading text-3xl sm:text-4xl font-black text-white uppercase tracking-wider">
+                    Escolha a sua <span class="text-fire-500 text-fire-glow">Modalidade</span>
+                </h2>
+                <p class="text-gray-400 mt-3">Alterne entre os planos de Personal Trainer Presencial e Consultoria Online para visualizar todos os detalhes.</p>
+
+                <!-- Mode Switcher Tabs -->
+                <div class="mt-8 inline-flex p-1.5 rounded-2xl bg-card-gradient border border-fire-500/40">
+                    <button id="btn-presencial" onclick="switchTab('presencial')" class="px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all bg-gradient-to-r from-fire-600 to-orange-600 text-white shadow-lg">
+                        <i class="fas fa-user-ninja mr-2"></i>PERSONAL PRESENCIAL
+                    </button>
+                    <button id="btn-consultoria" onclick="switchTab('consultoria')" class="px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all text-gray-400 hover:text-white">
+                        <i class="fas fa-laptop-house mr-2"></i>CONSULTORIA ONLINE
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: PERSONAL PRESENCIAL CONTENT -->
+            <div id="tab-presencial" class="space-y-12">
+                <!-- Benefícios / Recursos -->
+                <div class="bg-card-gradient p-8 rounded-3xl fire-border">
+                    <h3 class="font-heading text-xl font-bold text-white mb-6 uppercase flex items-center gap-3">
+                        <i class="fas fa-check-circle text-fire-500"></i>
+                        O que está incluído no Atendimento Presencial:
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-bullseye text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Aprimoramento Motor</h4>
+                                <p class="text-sm text-gray-400">Ajuste e otimização da carga de treino de acordo com a sua evolução diária.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-eye text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Supervisão de Treino</h4>
+                                <p class="text-sm text-gray-400">Acompanhamento presencial minucioso em cada repetição da sua rotina.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-calendar-alt text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Treinamento Periodizado</h4>
+                                <p class="text-sm text-gray-400">Estruturação de ciclos de treinos focados na sua meta individual.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-user-check text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Correção Técnica e Postural</h4>
+                                <p class="text-sm text-gray-400">Prevenção de lesões e maximização dos estímulos musculares.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-comments text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Orientação e Suporte</h4>
+                                <p class="text-sm text-gray-400">Dúvidas respondidas e acompanhamento contínuo da sua rotina.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-dumbbell text-2xl text-fire-500 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Aula Avulsa Disponível</h4>
+                                <p class="text-sm text-gray-400">Opção de atendimento pontual para alinhamentos por R$ 120,00.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Valores Presencial -->
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-center text-white mb-8 uppercase">
+                        Tabela de Valores — <span class="text-fire-500">Individual</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Card 1x/semana -->
+                        <div class="bg-card-gradient rounded-3xl p-8 fire-border relative flex flex-col justify-between">
+                            <div>
+                                <div class="text-center pb-6 border-b border-red-950/60">
+                                    <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Frequência</span>
+                                    <h4 class="font-heading text-3xl font-black text-white mt-1">1x / semana</h4>
+                                </div>
+                                <div class="space-y-4 my-6">
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Mensal</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 440,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Bimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 800,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50 border border-fire-500/30">
+                                        <span class="text-gray-300 font-medium">Trimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 1080,00</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-fire-500/10 border border-fire-500/20 text-center mb-6">
+                                    <p class="text-xs font-bold text-gray-300">TREINO COMPLETO OU CONSULTORIA PAGA A PARTE</p>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Tenho%20interesse%20no%20plano%20Presencial%201x/semana." target="_blank" class="w-full py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-center block shadow-md transition-all">
+                                CONTRATAR PLANO
+                            </a>
+                        </div>
+
+                        <!-- Card 2x/semana (Destaque) -->
+                        <div class="bg-card-gradient rounded-3xl p-8 fire-border relative flex flex-col justify-between border-2 border-fire-500 shadow-[0_0_30px_rgba(255,69,0,0.3)] transform md:-translate-y-2">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-fire-600 to-orange-500 text-white font-heading text-[10px] font-bold tracking-widest px-4 py-1 rounded-full uppercase shadow-lg">
+                                Mais Popular
+                            </div>
+                            <div>
+                                <div class="text-center pb-6 border-b border-red-950/60 mt-2">
+                                    <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Frequência</span>
+                                    <h4 class="font-heading text-3xl font-black text-white mt-1">2x / semana</h4>
+                                </div>
+                                <div class="space-y-4 my-6">
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Mensal</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 800,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Bimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 1440,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50 border border-fire-500/30">
+                                        <span class="text-gray-300 font-medium">Trimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 1920,00</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-fire-500/10 border border-fire-500/30 text-center mb-6">
+                                    <p class="text-xs font-bold text-gray-200">PRESCRIÇÃO DO TREINO COMPLETO E ACOMPANHAMENTO MENSAL</p>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Tenho%20interesse%20no%20plano%20Presencial%202x/semana." target="_blank" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-heading font-bold text-center block shadow-lg transition-all">
+                                CONTRATAR PLANO
+                            </a>
+                        </div>
+
+                        <!-- Card 3x/semana -->
+                        <div class="bg-card-gradient rounded-3xl p-8 fire-border relative flex flex-col justify-between">
+                            <div>
+                                <div class="text-center pb-6 border-b border-red-950/60">
+                                    <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Frequência</span>
+                                    <h4 class="font-heading text-3xl font-black text-white mt-1">3x / semana</h4>
+                                </div>
+                                <div class="space-y-4 my-6">
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Mensal</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 1080,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50">
+                                        <span class="text-gray-300 font-medium">Bimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 1920,00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-3 rounded-lg bg-black/50 border border-fire-500/30">
+                                        <span class="text-gray-300 font-medium">Trimestral</span>
+                                        <span class="font-heading font-bold text-fire-500 text-lg">R$ 2520,00</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-fire-500/10 border border-fire-500/20 text-center mb-6">
+                                    <p class="text-xs font-bold text-gray-300">CONSULTORIA COMPLETA COM ACOMPANHAMENTO SEMANAL E TREINO COMPLETO</p>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Tenho%20interesse%20no%20plano%20Presencial%203x/semana." target="_blank" class="w-full py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-center block shadow-md transition-all">
+                                CONTRATAR PLANO
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Nota de Observação -->
+                    <div class="mt-8 p-4 rounded-2xl bg-black/60 border border-red-950/80 text-center text-xs text-gray-400">
+                        <p><i class="fas fa-exclamation-circle text-fire-500 mr-2"></i>Lembrando que reposições de aulas serão válidas apenas com aviso prévio, apenas em casos de doença ou imprevisto grave informado com antecedência.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: CONSULTORIA ONLINE CONTENT -->
+            <div id="tab-consultoria" class="hidden space-y-12">
+                <!-- Benefícios / Recursos Consultoria -->
+                <div class="bg-card-gradient p-8 rounded-3xl fire-border">
+                    <h3 class="font-heading text-xl font-bold text-white mb-6 uppercase flex items-center gap-3">
+                        <i class="fas fa-laptop text-fire-500"></i>
+                        O que está incluído na Consultoria Online:
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex items-start space-x-4 p-5 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-headset text-3xl text-fire-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Suporte e Orientação</h4>
+                                <p class="text-sm text-gray-400 mt-1">Contato direto para tirar dúvidas sobre execução, cargas e adaptações no treino.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-5 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-tasks text-3xl text-fire-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Treinamento Periodizado</h4>
+                                <p class="text-sm text-gray-400 mt-1">Fichas e planejamentos estruturados para seu objetivo específico.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 p-5 rounded-xl bg-black/40 border border-red-950/50">
+                            <i class="fas fa-chart-line text-3xl text-fire-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Acompanhamento Semanal</h4>
+                                <p class="text-sm text-gray-400 mt-1">Ajustes constantes e feedback contínuo para evolução real.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Valores Consultoria -->
+                <div id="consultoria">
+                    <h3 class="font-heading text-2xl font-bold text-center text-white mb-8 uppercase">
+                        Planos de <span class="text-fire-500">Consultoria Online</span>
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Recorrente -->
+                        <div class="bg-card-gradient rounded-3xl p-6 fire-border text-center flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Plano</span>
+                                <h4 class="font-heading text-2xl font-black text-white mt-1">Recorrente</h4>
+                                <div class="my-6">
+                                    <span class="font-heading text-4xl font-black text-fire-500">R$ 150</span>
+                                    <span class="text-gray-400 text-sm">/mês</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-6">Flexibilidade mensal para quem deseja acompanhamento contínuo.</p>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20contratar%20a%20Consultoria%20Plano%20Recorrente." target="_blank" class="w-full py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-sm">CONTRATAR</a>
+                        </div>
+
+                        <!-- Bimestral -->
+                        <div class="bg-card-gradient rounded-3xl p-6 fire-border text-center flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Plano</span>
+                                <h4 class="font-heading text-2xl font-black text-white mt-1">Bimestral</h4>
+                                <div class="my-6">
+                                    <span class="font-heading text-4xl font-black text-fire-500">R$ 280</span>
+                                    <span class="text-gray-400 text-sm">/2 meses</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-6">Economia extra para foco total em 8 semanas de treino.</p>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20contratar%20a%20Consultoria%20Plano%20Bimestral." target="_blank" class="w-full py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-sm">CONTRATAR</a>
+                        </div>
+
+                        <!-- Trimestral (Recomendado) -->
+                        <div class="bg-card-gradient rounded-3xl p-6 fire-border text-center flex flex-col justify-between border-2 border-fire-500 shadow-[0_0_20px_rgba(255,69,0,0.3)]">
+                            <div>
+                                <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Recomendado</span>
+                                <h4 class="font-heading text-2xl font-black text-white mt-1">Trimestral</h4>
+                                <div class="my-6">
+                                    <span class="font-heading text-4xl font-black text-fire-500">R$ 390</span>
+                                    <span class="text-gray-400 text-sm">/3 meses</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-6">Período ideal para ver mudanças marcantes na composição corporal.</p>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20contratar%20a%20Consultoria%20Plano%20Trimestral." target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-heading font-bold text-sm">CONTRATAR</a>
+                        </div>
+
+                        <!-- Semestral -->
+                        <div class="bg-card-gradient rounded-3xl p-6 fire-border text-center flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Plano</span>
+                                <h4 class="font-heading text-2xl font-black text-white mt-1">Semestral</h4>
+                                <div class="my-6">
+                                    <span class="font-heading text-4xl font-black text-fire-500">R$ 720</span>
+                                    <span class="text-gray-400 text-sm">/6 meses</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-6">Máximo custo-benefício para quem busca compromisso de longo prazo.</p>
+                            </div>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20contratar%20a%20Consultoria%20Plano%20Semestral." target="_blank" class="w-full py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-sm">CONTRATAR</a>
+                        </div>
+                    </div>
+
+                    <!-- Opção de Treino Padrão Avulso -->
+                    <div class="mt-8 p-6 rounded-3xl bg-card-gradient border border-fire-500/40 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h4 class="font-heading text-xl font-bold text-white uppercase">TREINO PADRÃO (8 A 12 SEMANAS)</h4>
+                            <p class="text-sm text-gray-400 mt-1">Prescrição de ficha completa sem acompanhamento semanal contínuo.</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <span class="font-heading text-3xl font-black text-fire-500">R$ 180,00</span>
+                            <a href="https://wa.me/5511985027705?text=Olá!%20Tenho%20interesse%20no%20Treino%20Padrão." target="_blank" class="px-6 py-3 rounded-xl bg-fire-600 hover:bg-fire-500 text-white font-heading font-bold text-sm whitespace-nowrap">
+                                COMPRAR TREINO
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculadora" class="relative z-10 py-20 bg-fire-gradient">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card-gradient p-8 sm:p-12 rounded-3xl fire-border">
+                <div class="text-center mb-8">
+                    <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Simulador Rápido</span>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-black text-white uppercase mt-1">
+                        Calculadora Interativa de Planos
+                    </h2>
+                    <p class="text-sm text-gray-400 mt-2">Selecione suas preferências para visualizar o valor correspondente instantaneamente.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Frequência / Tipo -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 uppercase mb-2">1. Selecione o Tipo / Frequência:</label>
+                        <select id="calc-type" onchange="calculatePrice()" class="w-full bg-black border border-fire-500/40 rounded-xl p-4 text-white font-medium focus:outline-none focus:border-fire-500">
+                            <option value="p1">Personal Presencial - 1x por semana</option>
+                            <option value="p2" selected>Personal Presencial - 2x por semana</option>
+                            <option value="p3">Personal Presencial - 3x por semana</option>
+                            <option value="c_rec">Consultoria Online - Mensal Recorrente</option>
+                            <option value="c_bim">Consultoria Online - Bimestral</option>
+                            <option value="c_tri">Consultoria Online - Trimestral</option>
+                            <option value="c_sem">Consultoria Online - Semestral</option>
+                        </select>
+                    </div>
+
+                    <!-- Período (Para Presencial) -->
+                    <div id="period-container">
+                        <label class="block text-sm font-bold text-gray-300 uppercase mb-2">2. Período do Plano Presencial:</label>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button type="button" onclick="setPeriod('mensal')" id="btn-mensal" class="period-btn py-3 rounded-xl border border-fire-500/40 bg-black text-white font-bold text-sm hover:border-fire-500">Mensal</button>
+                            <button type="button" onclick="setPeriod('bimestral')" id="btn-bimestral" class="period-btn py-3 rounded-xl border border-fire-500 bg-fire-600/30 text-white font-bold text-sm">Bimestral</button>
+                            <button type="button" onclick="setPeriod('trimestral')" id="btn-trimestral" class="period-btn py-3 rounded-xl border border-fire-500/40 bg-black text-white font-bold text-sm hover:border-fire-500">Trimestral</button>
+                        </div>
+                    </div>
+
+                    <!-- Display do Valor Calculado -->
+                    <div class="pt-6 border-t border-red-950/60 text-center">
+                        <span class="text-xs text-gray-400 uppercase tracking-widest">Valor do Investimento:</span>
+                        <div id="calc-result" class="font-heading text-4xl sm:text-5xl font-black text-fire-500 text-fire-glow my-2">R$ 1.440,00</div>
+                        <p id="calc-desc" class="text-xs text-gray-300 mb-6">Prescrição do treino completo e acompanhamento mensal.</p>
+
+                        <a id="calc-cta" href="#" target="_blank" class="inline-flex items-center space-x-2 bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-heading font-bold py-4 px-8 rounded-xl shadow-lg transition-all hover:scale-105">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>SOLICITAR ESTE PLANO</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parcerias" class="relative z-10 py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Acompanhamento Multidisciplinar</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-black text-white uppercase mt-1">
+                    Parcerias <span class="text-fire-500">Oficiais</span>
+                </h2>
+                <p class="text-gray-400 mt-2">Para alcançar melhores resultados estéticos e de saúde, alinhe seu treino com uma nutrição estratégica.</p>
+            </div>
+
+            <div class="max-w-xl mx-auto">
+                <div class="bg-card-gradient p-8 rounded-3xl fire-border relative overflow-hidden text-center">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-fire-500">
+                        <i class="fas fa-apple-alt text-9xl"></i>
+                    </div>
+
+                    <div class="inline-flex p-4 rounded-full bg-fire-500/10 border border-fire-500/30 text-fire-500 mb-4">
+                        <i class="fas fa-utensils text-3xl"></i>
+                    </div>
+
+                    <h3 class="font-heading text-2xl font-black text-white uppercase">NUTRICIONISTA</h3>
+                    <p class="text-gray-300 font-semibold mt-1">Bruno Nutri</p>
+
+                    <div class="mt-8 space-y-4">
+                        <a href="https://wa.me/5511985570876" target="_blank" class="flex items-center justify-center space-x-3 p-4 rounded-2xl bg-black border border-fire-500/30 hover:border-fire-500 transition-all text-white font-bold group">
+                            <i class="fas fa-phone-alt text-fire-500 group-hover:scale-110 transition-transform"></i>
+                            <span>(11) 98557-0876</span>
+                        </a>
+                        <a href="https://instagram.com/bruno_nuttri" target="_blank" class="flex items-center justify-center space-x-3 p-4 rounded-2xl bg-black border border-fire-500/30 hover:border-fire-500 transition-all text-white font-bold group">
+                            <i class="fab fa-instagram text-fire-500 text-xl group-hover:scale-110 transition-transform"></i>
+                            <span>@bruno_nuttri</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="relative z-10 py-20 bg-fire-gradient border-t border-red-950/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <span class="text-xs font-bold text-fire-500 uppercase tracking-widest">Fale Conosco</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mt-1">
+                        CONTATO E <br><span class="text-fire-500 text-fire-glow">REDES SOCIAIS</span>
+                    </h2>
+                    <p class="text-gray-300 mt-4 text-lg">
+                        Pronto para transformar sua rotina de treinos? Entre em contato e tire todas as suas dúvidas diretamente com o Personal.
+                    </p>
+
+                    <div class="mt-8 space-y-4">
+                        <a href="https://wa.me/5511985027705" target="_blank" class="flex items-center space-x-4 p-4 rounded-2xl bg-card-gradient fire-border text-white font-semibold hover:scale-102 transition-transform">
+                            <div class="p-3 rounded-xl bg-fire-500/20 text-fire-500 text-2xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 uppercase block">WhatsApp / Telefone</span>
+                                <span class="text-lg font-bold">(11) 98502-7705</span>
+                            </div>
+                        </a>
+
+                        <a href="https://instagram.com/jfrancopersonal" target="_blank" class="flex items-center space-x-4 p-4 rounded-2xl bg-card-gradient fire-border text-white font-semibold hover:scale-102 transition-transform">
+                            <div class="p-3 rounded-xl bg-fire-500/20 text-fire-500 text-2xl">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 uppercase block">Instagram Oficial</span>
+                                <span class="text-lg font-bold">@jfrancopersonal</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:jfrancopersonal@gmail.com" class="flex items-center space-x-4 p-4 rounded-2xl bg-card-gradient fire-border text-white font-semibold hover:scale-102 transition-transform">
+                            <div class="p-3 rounded-xl bg-fire-500/20 text-fire-500 text-2xl">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 uppercase block">E-mail Direto</span>
+                                <span class="text-lg font-bold">jfrancopersonal@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Marca / Logo Card em Destaque no Rodapé -->
+                <div class="bg-card-gradient p-10 rounded-3xl fire-border text-center flex flex-col items-center justify-center">
+                    <div class="w-24 h-24 rounded-2xl bg-black border-2 border-fire-500 flex items-center justify-center shadow-[0_0_30px_rgba(255,69,0,0.5)] mb-6">
+                        <span class="font-heading text-4xl font-black text-white">J<span class="text-fire-500">.</span>F</span>
+                    </div>
+                    <h3 class="font-heading text-3xl font-black text-white tracking-widest uppercase">J.FRANCO</h3>
+                    <p class="text-fire-500 font-bold tracking-widest uppercase text-xs mt-1">PERSONAL TRAINER & CONSULTORIA</p>
+                    <p class="text-gray-400 text-sm mt-4 max-w-sm">
+                        Excelência, disciplina e foco no resultado físico de alta performance.
+                    </p>
+
+                    <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20iniciar%20minha%20consultoria." target="_blank" class="mt-8 px-8 py-4 rounded-xl bg-gradient-to-r from-fire-600 to-orange-600 hover:from-fire-500 hover:to-orange-500 text-white font-heading font-bold shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all">
+                        INICIAR TRANSFORMAÇÃO
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Copyright -->
+    <footer class="bg-black py-6 border-t border-red-950/40 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© <span id="year"></span> J.FRANCO PERSONAL. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic current year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Tab Switcher Logic
+        function switchTab(tab) {
+            const btnPresencial = document.getElementById('btn-presencial');
+            const btnConsultoria = document.getElementById('btn-consultoria');
+            const tabPresencial = document.getElementById('tab-presencial');
+            const tabConsultoria = document.getElementById('tab-consultoria');
+
+            if (tab === 'presencial') {
+                tabPresencial.classList.remove('hidden');
+                tabConsultoria.classList.add('hidden');
+
+                btnPresencial.className = "px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all bg-gradient-to-r from-fire-600 to-orange-600 text-white shadow-lg";
+                btnConsultoria.className = "px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all text-gray-400 hover:text-white";
+            } else {
+                tabPresencial.classList.add('hidden');
+                tabConsultoria.classList.remove('hidden');
+
+                btnConsultoria.className = "px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all bg-gradient-to-r from-fire-600 to-orange-600 text-white shadow-lg";
+                btnPresencial.className = "px-6 py-3 rounded-xl font-heading font-bold text-sm tracking-wide transition-all text-gray-400 hover:text-white";
+            }
+        }
+
+        // Calculator Logic
+        let currentPeriod = 'bimestral';
+
+        const prices = {
+            p1: { mensal: "R$ 440,00", bimestral: "R$ 800,00", trimestral: "R$ 1.080,00", desc: "Treino completo ou consultoria paga a parte." },
+            p2: { mensal: "R$ 800,00", bimestral: "R$ 1.440,00", trimestral: "R$ 1.920,00", desc: "Prescrição do treino completo e acompanhamento mensal." },
+            p3: { mensal: "R$ 1.080,00", bimestral: "R$ 1.920,00", trimestral: "R$ 2.520,00", desc: "Consultoria completa com acompanhamento semanal e treino completo." },
+            c_rec: { val: "R$ 150,00", desc: "Consultoria Online Recorrente Mensal com acompanhamento." },
+            c_bim: { val: "R$ 280,00", desc: "Consultoria Online Bimestral (2 meses de treino e acompanhamento)." },
+            c_tri: { val: "R$ 390,00", desc: "Consultoria Online Trimestral (3 meses com acompanhamento semanal)." },
+            c_sem: { val: "R$ 720,00", desc: "Consultoria Online Semestral (6 meses de acompanhamento completo)." }
+        };
+
+        function setPeriod(period) {
+            currentPeriod = period;
+            
+            // Highlight button
+            ['mensal', 'bimestral', 'trimestral'].forEach(p => {
+                const btn = document.getElementById(`btn-${p}`);
+                if (p === period) {
+                    btn.className = "period-btn py-3 rounded-xl border border-fire-500 bg-fire-600/30 text-white font-bold text-sm";
+                } else {
+                    btn.className = "period-btn py-3 rounded-xl border border-fire-500/40 bg-black text-white font-bold text-sm hover:border-fire-500";
+                }
+            });
+
+            calculatePrice();
+        }
+
+        function calculatePrice() {
+            const selectVal = document.getElementById('calc-type').value;
+            const periodContainer = document.getElementById('period-container');
+            const resultEl = document.getElementById('calc-result');
+            const descEl = document.getElementById('calc-desc');
+            const ctaEl = document.getElementById('calc-cta');
+
+            let finalVal = "";
+            let finalDesc = "";
+            let planName = "";
+
+            if (selectVal.startsWith('p')) {
+                periodContainer.style.display = 'block';
+                const data = prices[selectVal];
+                finalVal = data[currentPeriod];
+                finalDesc = data.desc;
+                
+                const freqMap = { p1: "1x/semana", p2: "2x/semana", p3: "3x/semana" };
+                planName = `Personal Presencial ${freqMap[selectVal]} (${currentPeriod})`;
+            } else {
+                periodContainer.style.display = 'none';
+                const data = prices[selectVal];
+                finalVal = data.val;
+                finalDesc = data.desc;
+
+                const nameMap = {
+                    c_rec: "Consultoria Recorrente",
+                    c_bim: "Consultoria Bimestral",
+                    c_tri: "Consultoria Trimestral",
+                    c_sem: "Consultoria Semestral"
+                };
+                planName = nameMap[selectVal];
+            }
+
+            resultEl.innerText = finalVal;
+            descEl.innerText = finalDesc;
+            ctaEl.href = `https://wa.me/5511985027705?text=Olá!%20Gostaria%20de%20contratar%20o%20plano%20${encodeURIComponent(planName)}%20no%20valor%20de%20${encodeURIComponent(finalVal)}.`;
+        }
+
+        // Initialize calculator
+        calculatePrice();
+    </script>
+</body>
+</html>
