@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcerias Oficiais - J.FRANCO</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fire: {
+                            500: '#ff4500',
+                            600: '#e63900',
+                            glow: '#ff5722',
+                        },
+                        darkBg: '#0a0505',
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0505;
+            color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        .text-fire-glow {
+            text-shadow: 0 0 12px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 87, 34, 0.4);
+        }
+        
+        .fire-card {
+            border: 1px solid rgba(255, 69, 0, 0.5);
+            box-shadow: 0 0 35px rgba(255, 69, 0, 0.25);
+            background: linear-gradient(145deg, rgba(20, 12, 12, 0.95) 0%, rgba(10, 5, 5, 0.98) 100%);
+        }
+
+        .ambient-fire {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            background: 
+                radial-gradient(ellipse at 50% 30%, rgba(255, 69, 0, 0.12) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+
+    <div class="ambient-fire"></div>
+
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-95 bg-[#0a0505] border-b border-red-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3 shrink-0">
+                    <div class="relative flex items-center justify-center w-12 h-12 bg-black border border-fire-500/50 rounded-lg shadow-[0_0_15px_rgba(255,69,0,0.3)]">
+                        <span class="font-heading text-2xl font-black text-white">J<span class="text-fire-500">.</span>F</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-black tracking-wider text-xl text-white">J.FRANCO</span>
+                        <span class="text-[10px] tracking-[0.2em] font-bold text-red-500 uppercase -mt-1">Personal & Consultoria</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+                    <a href="index.html" class="hover:text-fire-500 transition-colors"><i class="fas fa-arrow-left mr-1"></i> Voltar ao Início</a>
+                    <a href="parcerias.html" class="text-fire-500 font-bold border-b-2 border-fire-500 pb-1">Parcerias</a>
+                    <a href="cupons.html" class="hover:text-fire-500 transition-colors">Cupons</a>
+                </nav>
+
+                <div class="flex items-center">
+                    <a href="https://wa.me/5511985027705?text=Olá%20Jhow!" target="_blank" class="flex items-center space-x-2 bg-gradient-to-r from-fire-600 to-orange-600 text-white font-bold py-2.5 px-6 rounded-full shadow-lg">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL (BRUNO NUTRI) -->
+    <main class="relative z-10 flex-grow flex items-center justify-center py-16 px-4">
+        <div class="max-w-2xl w-full text-center space-y-8">
+            <div>
+                <span class="text-fire-500 font-heading font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
+                    ACOMPANHAMENTO MULTIDISCIPLINAR
+                </span>
+                <h1 class="font-heading text-4xl sm:text-5xl font-black text-white uppercase tracking-wider">
+                    PARCERIAS <span class="text-fire-500 text-fire-glow">OFICIAIS</span>
+                </h1>
+                <p class="text-gray-300 text-sm sm:text-base mt-4 max-w-xl mx-auto font-light leading-relaxed">
+                    Para alcançar melhores resultados estéticos e de saúde, alinhe seu treino com uma nutrição estratégica.
+                </p>
+            </div>
+
+            <!-- Card Nutricionista Bruno Nutri -->
+            <div class="fire-card p-8 sm:p-12 rounded-3xl text-center space-y-6 relative overflow-hidden">
+                <div class="w-16 h-16 bg-fire-500/10 border border-fire-500/30 text-fire-500 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-[0_0_15px_rgba(255,69,0,0.2)]">
+                    <i class="fas fa-utensils"></i>
+                </div>
+
+                <div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-black text-white uppercase tracking-wide">
+                        NUTRICIONISTA
+                    </h2>
+                    <p class="text-gray-300 font-medium text-lg mt-1">
+                        Bruno Nutri
+                    </p>
+                </div>
+
+                <a href="https://wa.me/5511985570876?text=Olá%20Bruno%20Nutri!%20Vim%20pelo%20site%20do%20J.Franco." target="_blank" class="w-full py-4 px-6 rounded-2xl border border-fire-500/40 bg-black/50 hover:bg-fire-500/10 text-white font-bold flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-md">
+                    <i class="fas fa-phone-alt text-fire-500"></i>
+                    <span class="text-base sm:text-lg tracking-wider">(11) 98557-0876</span>
+                </a>
+
+                <a href="https://instagram.com/bruno_nuttri" target="_blank" class="w-full py-4 px-6 rounded-2xl border border-fire-500/40 bg-black/50 hover:bg-fire-500/10 text-white font-bold flex items-center justify-center gap-3 transition-all hover:scale-[1.02] shadow-md">
+                    <i class="fab fa-instagram text-fire-500 text-xl"></i>
+                    <span class="text-base sm:text-lg tracking-wider">@bruno_nuttri</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="relative z-10 bg-black border-t border-red-950/60 py-8 text-center text-gray-500 text-sm">
+        <p>© 2026 J.FRANCO PERSONAL. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

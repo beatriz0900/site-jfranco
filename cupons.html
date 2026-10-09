@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupons de Desconto - J.FRANCO</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fire: {
+                            500: '#ff4500',
+                            600: '#e63900',
+                            glow: '#ff5722',
+                        },
+                        darkBg: '#0a0505',
+                        darkCard: '#140c0c',
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0505;
+            color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        .text-fire-glow {
+            text-shadow: 0 0 12px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 87, 34, 0.4);
+        }
+        
+        .fire-card {
+            border: 1px solid rgba(255, 69, 0, 0.35);
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.15);
+            background: linear-gradient(145deg, rgba(20, 12, 12, 0.95) 0%, rgba(10, 5, 5, 0.98) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .fire-card:hover {
+            border-color: rgba(255, 87, 34, 0.8);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.35);
+            transform: translateY(-3px);
+        }
+
+        .ambient-fire {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            background: 
+                radial-gradient(ellipse at 50% 30%, rgba(255, 69, 0, 0.1) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between">
+
+    <div class="ambient-fire"></div>
+
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-95 bg-[#0a0505] border-b border-red-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3 shrink-0">
+                    <div class="relative flex items-center justify-center w-12 h-12 bg-black border border-fire-500/50 rounded-lg shadow-[0_0_15px_rgba(255,69,0,0.3)]">
+                        <span class="font-heading text-2xl font-black text-white">J<span class="text-fire-500">.</span>F</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-black tracking-wider text-xl text-white">J.FRANCO</span>
+                        <span class="text-[10px] tracking-[0.2em] font-bold text-red-500 uppercase -mt-1">Personal & Consultoria</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+                    <a href="index.html" class="hover:text-fire-500 transition-colors"><i class="fas fa-arrow-left mr-1"></i> Voltar ao Início</a>
+                    <a href="parcerias.html" class="hover:text-fire-500 transition-colors">Parcerias</a>
+                    <a href="cupons.html" class="text-fire-500 font-bold border-b-2 border-fire-500 pb-1">Cupons</a>
+                </nav>
+
+                <div class="flex items-center">
+                    <a href="https://wa.me/5511985027705?text=Olá%20Jhow!" target="_blank" class="flex items-center space-x-2 bg-gradient-to-r from-fire-600 to-orange-600 text-white font-bold py-2.5 px-6 rounded-full shadow-lg">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL (CUPONS DE DESCONTO) -->
+    <main class="relative z-10 flex-grow flex items-center justify-center py-16 px-4">
+        <div class="max-w-6xl w-full text-center space-y-12">
+            <div>
+                <span class="text-fire-500 font-heading font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
+                    BENEFÍCIOS EXCLUSIVOS
+                </span>
+                <h1 class="font-heading text-4xl sm:text-5xl font-black text-white uppercase tracking-wider">
+                    CUPONS DE <span class="text-fire-500 text-fire-glow">DESCONTO</span>
+                </h1>
+                <p class="text-gray-300 text-sm sm:text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
+                    Aproveite vantagens e descontos especiais nas marcas parceiras do J.Franco Personal.
+                </p>
+            </div>
+
+            <!-- GRID DE CUPONS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- CARD 1: Suplementos & Cia -->
+                <div class="fire-card p-6 rounded-3xl text-left flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="h-36 bg-black/60 rounded-2xl border border-gray-800/80 flex items-center justify-center mb-6">
+                            <i class="fas fa-pills text-4xl text-fire-500"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white uppercase">Suplementos & Cia</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Suplementação de alta performance e matérias-primas importadas.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="p-3.5 rounded-2xl border border-dashed border-fire-500/60 bg-black/50 flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider block">CUPOM DE DESCONTO</span>
+                                <span class="font-heading font-black text-fire-500 text-base">JFRANCO10</span>
+                            </div>
+                            <span class="bg-fire-600 text-white font-heading font-black text-xs px-3 py-1.5 rounded-xl shadow">
+                                10% OFF
+                            </span>
+                        </div>
+
+                        <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20usar%20o%20cupom%20JFRANCO10" target="_blank" class="w-full py-3.5 rounded-xl border border-gray-700 bg-black/80 hover:bg-fire-600 hover:border-fire-500 text-white font-bold text-sm transition-all text-center block uppercase tracking-wider">
+                            Acessar Loja
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Farmácia de Manipulação -->
+                <div class="fire-card p-6 rounded-3xl text-left flex flex-col justify-between space-y-6 border-fire-500/60 shadow-[0_0_25px_rgba(255,69,0,0.25)]">
+                    <div>
+                        <div class="h-36 bg-black/60 rounded-2xl border border-gray-800/80 flex items-center justify-center mb-6">
+                            <i class="fas fa-prescription-bottle-alt text-4xl text-fire-500"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white uppercase">Farmácia de Manipulação</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Fórmulas personalizadas e manipuladas sob medida para o seu objetivo.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="p-3.5 rounded-2xl border border-dashed border-fire-500/60 bg-black/50 flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider block">CUPOM DE DESCONTO</span>
+                                <span class="font-heading font-black text-fire-500 text-base">JFRANCO15</span>
+                            </div>
+                            <span class="bg-fire-600 text-white font-heading font-black text-xs px-3 py-1.5 rounded-xl shadow">
+                                15% OFF
+                            </span>
+                        </div>
+
+                        <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20usar%20o%20cupom%20JFRANCO15" target="_blank" class="w-full py-3.5 rounded-xl border border-gray-700 bg-black/80 hover:bg-fire-600 hover:border-fire-500 text-white font-bold text-sm transition-all text-center block uppercase tracking-wider">
+                            Acessar Loja
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Wear Fitness Co. -->
+                <div class="fire-card p-6 rounded-3xl text-left flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="h-36 bg-black/60 rounded-2xl border border-gray-800/80 flex items-center justify-center mb-6">
+                            <i class="fas fa-tshirt text-4xl text-fire-500"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white uppercase">Wear Fitness Co.</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Roupas e acessórios esportivos projetados para treinos intensos.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="p-3.5 rounded-2xl border border-dashed border-fire-500/60 bg-black/50 flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider block">CUPOM DE DESCONTO</span>
+                                <span class="font-heading font-black text-fire-500 text-base">JFRANCO</span>
+                            </div>
+                            <span class="bg-fire-600 text-white font-heading font-black text-xs px-3 py-1.5 rounded-xl shadow">
+                                12% OFF
+                            </span>
+                        </div>
+
+                        <a href="https://wa.me/5511985027705?text=Olá!%20Quero%20usar%20o%20cupom%20JFRANCO" target="_blank" class="w-full py-3.5 rounded-xl border border-gray-700 bg-black/80 hover:bg-fire-600 hover:border-fire-500 text-white font-bold text-sm transition-all text-center block uppercase tracking-wider">
+                            Acessar Loja
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="relative z-10 bg-black border-t border-red-950/60 py-8 text-center text-gray-500 text-sm">
+        <p>© 2026 J.FRANCO PERSONAL. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
